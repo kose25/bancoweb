@@ -39,6 +39,7 @@ public class Operacion extends HttpServlet {
             long nroCuenta = Long.parseLong(request.getParameter("cuentaOrigen"));
             double saldo = Double.parseDouble(request.getParameter("saldo"));
             int tipo = Integer.valueOf(request.getParameter("tipo"));
+            int busqueda = Integer.valueOf(request.getParameter("tipo"));
 
             if (banco.findCuentaByNroCuenta(nroCuenta) != null) {
                 if (tipo == 1) {

@@ -17,11 +17,15 @@
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
         <title>ver cuentas</title>
     </head>
     <body>
-        <h1>Todas las cuentas</h1>
-        <table border="1">
+        <!-- <h1>Todas las cuentas</h1>
+        <table border="1" id="myTable" class="display">
             <thead>
                 <tr>
                     <th>Cuenta</th>
@@ -30,16 +34,33 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (Cuenta dato : banco.getCuentas()) { %>
+                <% for (Cuenta dato : banco.getCuentas()) {%>
                 <tr>
                     <td><%=dato.getNroCuenta()%></td>
                     <td><%=dato.getCliente().getCedula()%></td>
                     <td><%=dato.getSaldo()%></td>
                 </tr>
                 <% }%>
-                
-            </tbody>
-        </table>
 
+            </tbody>
+        </table> -->
+                <form name="operadcion" method="post" action="informe.do">
+                    <p>seleccione el tipo de busqueda</p>
+                    <select name="busqueda">
+                        <option value="0">por cuenta</option>
+                        <option value="1">por cliente</option>
+                    </select>
+                    <input type="number" name="searchfield" value=""  placeholder="ingrese la busqueda" required/>
+                    <input type="submit" value="buscar" />
+                </form>
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+        </script>
     </body>
 </html>

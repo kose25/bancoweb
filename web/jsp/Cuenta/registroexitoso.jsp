@@ -35,11 +35,11 @@
         
         <hr>
         
-<<<<<<< HEAD
+
         <a href="./redir.do?url=./jsp/Cuenta/registroCta.jsp">Ingresar otra cuenta</a><br>        
-=======
-        <a href="redir.do?url=./jsp/Cuenta/registroCta.jsp">Ingresar otra cuenta</a><br>        
->>>>>>> 8d96f9b1f2ff752e3b78e19d7454a3ce5b48f9aa
+
+             
+
         <a href="./index.html">Ir a Inicio</a>
         
     </body>
