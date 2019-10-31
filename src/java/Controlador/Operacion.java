@@ -65,6 +65,17 @@ public class Operacion extends HttpServlet {
                         request.getRequestDispatcher("./jsp/error/errorCta.jsp").forward(request, response);
                     }
                 }
+                if(tipo == 3){
+                   long nroCuentaR = Long.parseLong(request.getParameter("cuentaDestino"));
+                   boolean dataResponse = banco.realizarTransferencia(saldo, nroCuenta, nroCuentaR);
+                   if(dataResponse){
+                       request.getSession().setAttribute("banco", banco);
+                       request.getRequestDispatcher("./jsp/Operacion/transferenciaExitosa.jsp").forward(request, response);
+                   }else {
+                        request.getSession().setAttribute("error", "El saldo es insuficiente, su saldo es: " + banco.findCuentaByNroCuenta(nroCuenta).getSaldo());
+                        request.getRequestDispatcher("./jsp/error/errorCta.jsp").forward(request, response);
+                    }
+                }
             } else {
                 request.getSession().setAttribute("error", "El numero de cuenta: " + nroCuenta + " no existe");
                 request.getRequestDispatcher("./jsp/error/errorCta.jsp").forward(request, response);
