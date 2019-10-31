@@ -19,7 +19,7 @@
         %>
         <h1 class="register-title">Hubo un error: <%=error%></h1>
         <p>
-            <a href="redir.do">Regresar a Registro de Cuentas</a>
+            <a href="./redir.do?url=./jsp/Cuenta/registroCta.jsp">Regresar a Registro de Cuentas</a>
         </p>
     </body>
 </html>

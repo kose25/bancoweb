@@ -35,7 +35,7 @@
         
         <hr>
         
-        <a href="redir.do">Ingresar otra cuenta</a><br>        
+        <a href="./redir.do?url=./jsp/Cuenta/registroCta.jsp">Ingresar otra cuenta</a><br>        
         <a href="./index.html">Ir a Inicio</a>
         
     </body>
