@@ -25,7 +25,7 @@
                 <input type="number" name="cuentaOrigen" value="" min="1" required placeholder="ingrese numero de cuenta" />
 
             <p> ingrese cuenta destino <p>
-                <input type="number" name="cuentaOrigen" value="" id="destino" placeholder="ingrese cuenta destino" disabled />
+                <input type="number" name="cuentaDestino" value="" id="destino" placeholder="ingrese cuenta destino" disabled />
 
             <p> ingresar monto<p>
                 <input type="number" name="saldo" value="0" min="1" required />

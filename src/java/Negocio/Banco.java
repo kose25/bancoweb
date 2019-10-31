@@ -72,6 +72,25 @@ public class Banco {
         }
         return false;
     }
+    
+    public boolean realizarTransferencia(double saldo, Long nroCuentaEnviar, Long nroCuentaRecibir){
+    
+        Cuenta cuenta = findCuentaByNroCuenta(nroCuentaEnviar);
+        Cuenta cuentab = findCuentaByNroCuenta(nroCuentaRecibir);
+        if(cuenta !=null && cuentab !=null){
+            Transferencia transferencia = new Transferencia();
+            transferencia.setFecha(LocalDate.now());
+            transferencia.setIdentificador(identificador.intValue());
+            transferencia.setSaldo(saldo);
+            identificador++;
+            if(cuenta.getSaldo() >= saldo){
+            cuenta.setSaldo(cuenta.getSaldo() - saldo);
+            cuentab.setSaldo(cuentab.getSaldo()+ saldo);
+            return operaciones.add(transferencia);
+            }
+        }
+    return false;
+    }
 
     public Cuenta findCuentaByNroCuenta(Long nroCuenta) {
         Cuenta c = new Cuenta(nroCuenta);
