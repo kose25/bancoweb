@@ -55,7 +55,7 @@ public class Banco {
         }
         return false;
     }
-    
+
     public boolean realizarRetiro(double saldo, Long nroCuenta) {
         Cuenta cuenta = findCuentaByNroCuenta(nroCuenta);
         if (cuenta != null) {
@@ -65,42 +65,59 @@ public class Banco {
             retiro.setSaldo(saldo);
             identificador++;
             if (cuenta.getSaldo() >= saldo) {
-            cuenta.setSaldo(cuenta.getSaldo() - saldo);
-            return operaciones.add(retiro);
+                cuenta.setSaldo(cuenta.getSaldo() - saldo);
+                return operaciones.add(retiro);
             }
-            
+
         }
         return false;
     }
-    
-    public boolean realizarTransferencia(double saldo, Long nroCuentaEnviar, Long nroCuentaRecibir){
-    
+
+    public boolean realizarTransferencia(double saldo, Long nroCuentaEnviar, Long nroCuentaRecibir) {
+
         Cuenta cuenta = findCuentaByNroCuenta(nroCuentaEnviar);
         Cuenta cuentab = findCuentaByNroCuenta(nroCuentaRecibir);
-        if(cuenta !=null && cuentab !=null){
+        if (cuenta != null && cuentab != null) {
             Transferencia transferencia = new Transferencia();
             transferencia.setFecha(LocalDate.now());
             transferencia.setIdentificador(identificador.intValue());
             transferencia.setSaldo(saldo);
             identificador++;
-            if(cuenta.getSaldo() >= saldo){
-            cuenta.setSaldo(cuenta.getSaldo() - saldo);
-            cuentab.setSaldo(cuentab.getSaldo()+ saldo);
-            return operaciones.add(transferencia);
+            if (cuenta.getSaldo() >= saldo) {
+                cuenta.setSaldo(cuenta.getSaldo() - saldo);
+                cuentab.setSaldo(cuentab.getSaldo() + saldo);
+                return operaciones.add(transferencia);
             }
         }
-    return false;
+        return false;
     }
 
     public Cuenta findCuentaByNroCuenta(Long nroCuenta) {
         Cuenta c = new Cuenta(nroCuenta);
-        if(cuentas.contains(c)){
+        if (cuentas.contains(c)) {
             return cuentas.floor(c);
         }
         return null;
     }
 
-    
+    private Cliente findClienteByNroCedula(Long nroCedula) {
+        Cliente cli = new Cliente(nroCedula);
+        if (clientes.contains(cli)) {
+            return clientes.floor(cli);
+        }
+        return null;
+    }
+
+    public Cuenta findCuentaByNroCedula(Long nroCedula) {
+        Cliente cli = findClienteByNroCedula(nroCedula);
+        for (Cuenta c : cuentas) {
+            if (c.getCliente().equals(cli)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     private Cliente buscarCliente(Cliente x) {
         if (this.clientes.contains(x)) {
             return this.clientes.floor(x);

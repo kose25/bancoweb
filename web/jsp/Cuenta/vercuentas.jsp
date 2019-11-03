@@ -44,9 +44,10 @@
 
             </tbody>
         </table> -->
-                <form name="operadcion" method="post" action="informe.do">
+                <form name="operacion" method="post" action="informe.do">
                     <p>seleccione el tipo de busqueda</p>
                     <select name="busqueda">
+                        <option> Elegir tipo de busqueda </option>
                         <option value="0">por cuenta</option>
                         <option value="1">por cliente</option>
                     </select>

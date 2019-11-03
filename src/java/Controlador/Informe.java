@@ -41,12 +41,15 @@ public class Informe extends HttpServlet {
                 if (tipo == 0) {
 //POr cuenta
 
-                    request.getSession().setAttribute("banco", "Los datos de la cuenta son \n"
+                    request.getSession().setAttribute("banco", banco + "Los datos de la cuenta son \n"
                             + banco.findCuentaByNroCuenta(nro).toString());
                     request.getRequestDispatcher("./jsp/Cuenta/registroexitoso.jsp").forward(request, response);
                 }
                 if (tipo == 1) {
 //por cliente
+                    request.getSession().setAttribute("banco", banco + "Los datos de la cuenta son \n"
+                            + banco.findCuentaByNroCedula(nro).toString());
+                    request.getRequestDispatcher("./jsp/Cuenta/registroexitoso.jsp").forward(request, response);
                 } else {
                     request.getSession().setAttribute("error", "El saldo es insuficiente, su saldo es: " + banco.findCuentaByNroCuenta(nro).getSaldo());
                     request.getRequestDispatcher("./jsp/error/errorCta.jsp").forward(request, response);
