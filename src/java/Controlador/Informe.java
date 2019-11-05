@@ -33,7 +33,7 @@ public class Informe extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Banco banco = (Banco) (request.getSession().getAttribute("banco"));
+        Banco banco = (Banco) (request.getSession().getAttribute("banco"));        
         try (PrintWriter out = response.getWriter()) {
             long nro = Long.parseLong(request.getParameter("searchfield"));
             int tipo = Integer.valueOf(request.getParameter("busqueda"));
@@ -41,21 +41,16 @@ public class Informe extends HttpServlet {
                 if (tipo == 0) {
 //POr cuenta
 
-                    request.getSession().setAttribute("banco", banco + "Los datos de la cuenta son \n"
-                            + banco.findCuentaByNroCuenta(nro).toString());
-                    request.getRequestDispatcher("./jsp/Cuenta/registroexitoso.jsp").forward(request, response);
+                    request.getSession().setAttribute("dato", banco.findCuentaByNroCuenta(nro));
+                    request.getRequestDispatcher("./jsp/Cuenta/resultadoCuenta.jsp").forward(request, response);
                 }
                 if (tipo == 1) {
 //por cliente
-                    request.getSession().setAttribute("banco", banco + "Los datos de la cuenta son \n"
-                            + banco.findCuentaByNroCedula(nro).toString());
-                    request.getRequestDispatcher("./jsp/Cuenta/registroexitoso.jsp").forward(request, response);
-                } else {
-                    request.getSession().setAttribute("error", "El saldo es insuficiente, su saldo es: " + banco.findCuentaByNroCuenta(nro).getSaldo());
-                    request.getRequestDispatcher("./jsp/error/errorCta.jsp").forward(request, response);
-                }
+                    request.getSession().setAttribute("cuentas", banco.findCuentaByNroCedula(nro));
+                    request.getRequestDispatcher("./jsp/Cuenta/resultado.jsp").forward(request, response);
+                } 
             } else {
-                request.getSession().setAttribute("error", "El numero de cuenta: " + nro + " no existe");
+                request.getSession().setAttribute("error", "El numero " + nro + " no existe");
                 request.getRequestDispatcher("./jsp/error/errorCta.jsp").forward(request, response);
             }
 

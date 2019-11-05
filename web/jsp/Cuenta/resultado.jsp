@@ -1,6 +1,6 @@
 <%-- 
-    Document   : resultadoCuenta
-    Created on : 31/10/2019, 07:34:19 AM
+    Document   : resultado
+    Created on : 4/11/2019, 04:17:01 PM
     Author     : Carlos Jose
 --%>
 
@@ -18,22 +18,24 @@
         <%
         Banco banco = (Banco) (request.getSession().getAttribute("banco"));
         request.getSession().setAttribute("banco", banco);
-        Cuenta cuentas = (Cuenta) request.getSession().getAttribute("dato");
-        
+        ArrayList<Cuenta> resultado = (ArrayList) request.getSession().getAttribute("cuentas");        
         
     %>
     </head>
     <body>
         
         
-        <h1>resultado busqueda por cuenta </h1> 
-                        
+        <h1>resultado busqueda por cliente </h1>
+        
+        
+            
+                
+                
                 
                 <p>
-                    <%=cuentas.toString()%>
+                    <%=resultado.toString()%>
                 </p>
 
             
     </body>
 </html>
-

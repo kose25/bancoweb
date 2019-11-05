@@ -24,6 +24,10 @@ public class Cliente implements Comparable {
         this.telefono = telefono;
         this.email = email;
     }   
+
+    public Cliente(Long nroCedula) {
+        cedula=nroCedula;
+    }
     
     
     @Override

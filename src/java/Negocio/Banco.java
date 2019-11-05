@@ -100,7 +100,7 @@ public class Banco {
         return null;
     }
 
-    private Cliente findClienteByNroCedula(Long nroCedula) {
+    public Cliente findClienteByNroCedula(Long nroCedula) {
         Cliente cli = new Cliente(nroCedula);
         if (clientes.contains(cli)) {
             return clientes.floor(cli);
@@ -108,14 +108,17 @@ public class Banco {
         return null;
     }
 
-    public Cuenta findCuentaByNroCedula(Long nroCedula) {
+    
+    
+    public ArrayList findCuentaByNroCedula(Long nroCedula) {
+        ArrayList<Cuenta> resultado = new ArrayList<Cuenta>();
         Cliente cli = findClienteByNroCedula(nroCedula);
         for (Cuenta c : cuentas) {
             if (c.getCliente().equals(cli)) {
-                return c;
+                resultado.add(c);
             }
         }
-        return null;
+        return resultado;
     }
 
     private Cliente buscarCliente(Cliente x) {
