@@ -10,11 +10,14 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="./css/estilo.css">
         <title>Registrar Operacion</title>
     </head>
 
     <body>
-        <form name="operadcion" method="post" action="operacion.do">
+        <p class="register-title">Seleccione el tipo de operacion a realizar</p>
+        <a class="btnStyle" href="./index.html"> HOME </a>
+        <form name="operadcion" method="post" action="operacion.do" class="register">
             <p>Seleccionar Operacion<p>
                 <select name="tipo" required id="dropdown">
                     <option value="1">Consignacion</option>
@@ -22,15 +25,15 @@
                     <option value="3">Transferencia</option>
                 </select>
             <p> ingresar cuenta origen <p>
-                <input type="number" name="cuentaOrigen" value="" min="1" required placeholder="ingrese numero de cuenta" />
+                <input type="number" class="register-input" name="cuentaOrigen" value="" min="1" required placeholder="ingrese numero de cuenta" />
 
             <p> ingrese cuenta destino <p>
-                <input type="number" name="cuentaDestino" value="" id="destino" placeholder="ingrese cuenta destino" disabled />
+                <input type="number" class="register-input" name="cuentaDestino" value="" id="destino" placeholder="ingrese cuenta destino" disabled />
 
             <p> ingresar monto<p>
-                <input type="number" name="saldo" value="0" min="1" required />
+                <input type="number" class="register-input" name="saldo" value="0" min="1" required />
 
-                <input type="submit" value="Registrar" name="registrar" />
+                <input type="submit" value="Registrar" name="registrar" class="register-button" />
         </form>
 
 

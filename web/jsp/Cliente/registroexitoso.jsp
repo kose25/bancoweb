@@ -36,5 +36,7 @@
         <hr>
         
         <a href="./jsp/Cliente/registrar.jsp">Ingresar otro cliente</a>
+        </br>
+        <a href="./index.html">Ir a Inicio</a>
     </body>
 </html>

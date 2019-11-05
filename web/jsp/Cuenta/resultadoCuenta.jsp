@@ -25,6 +25,8 @@
     </head>
     <body>
         
+        <a class="btnStyle" href="./index.html"> HOME </a>
+        
         
         <h1>resultado busqueda por cuenta </h1> 
                         
