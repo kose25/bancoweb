@@ -37,7 +37,7 @@ public class Informe extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             long nro = Long.parseLong(request.getParameter("searchfield"));
             int tipo = Integer.valueOf(request.getParameter("busqueda"));
-            if (banco.findCuentaByNroCuenta(nro) != null) {
+            if (banco.findCuentaByNroCuenta(nro) != null || banco.findCuentaByNroCedula(nro).size()>0) {
                 if (tipo == 0) {
 //POr cuenta
 

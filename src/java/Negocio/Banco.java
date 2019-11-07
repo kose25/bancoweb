@@ -108,8 +108,6 @@ public class Banco {
         return null;
     }
 
-    
-    
     public ArrayList findCuentaByNroCedula(Long nroCedula) {
         ArrayList<Cuenta> resultado = new ArrayList<Cuenta>();
         Cliente cli = findClienteByNroCedula(nroCedula);
